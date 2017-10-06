@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.StringTokenizer;
 
 import org.apache.commons.codec.binary.Base64;
@@ -89,6 +90,8 @@ import org.slf4j.LoggerFactory;
 
 import com.extjs.gxt.ui.client.data.BaseListLoadResult;
 import com.extjs.gxt.ui.client.data.ListLoadResult;
+
+import javax.xml.namespace.QName;
 
 /**
  *
@@ -325,7 +328,11 @@ public class GwtDeviceManagementServiceImpl extends KapuaRemoteServiceServlet im
                                 }
                                 gwtParam.setMin(ad.getMin());
                                 gwtParam.setMax(ad.getMax());
-
+                                Map<String, String> gwtEntries = new HashMap<String, String>();
+                                for(Entry<QName, String> entry : ad.getOtherAttributes().entrySet()) {
+                                    gwtEntries.put(entry.getKey().toString(), entry.getValue());
+                                }
+                                gwtParam.setOtherAttributes(gwtEntries);
                                 if (config.getProperties() != null) {
 
                                     // handle the value based on the cardinality of the attribute
