@@ -15,7 +15,7 @@ import org.eclipse.kapua.KapuaException;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.query.KapuaQuery;
 import org.eclipse.kapua.service.KapuaEntityService;
-import org.eclipse.kapua.service.event.KapuaEventBusListener;
+import org.eclipse.kapua.service.event.ServiceEventBusListener;
 
 /**
  * {@link Domain} service definition.
@@ -23,7 +23,7 @@ import org.eclipse.kapua.service.event.KapuaEventBusListener;
  * @since 1.0.0
  *
  */
-public interface DomainService extends KapuaEntityService<Domain, DomainCreator>, KapuaEventBusListener {
+public interface DomainService extends KapuaEntityService<Domain, DomainCreator>, ServiceEventBusListener {
 
     /**
      * Creates a new {@link Domain} based on the parameters provided in the {@link DomainCreator}.<br>
